@@ -2,20 +2,20 @@
 """
 @author: TianMiaoMiao
 
-util functions for MMMVAE model
+util functions for M3VAE model
 """
 import torch
 import importlib.resources
 from importlib.resources.abc import Traversable
-import mmmvae
+import m3vae
 import os
 
 def get_data_path(filename: str) -> str:
     """
-    Get the path to the resource file under src/mmmvae/data within the package
+    Get the path to the resource file under src/m3vae/data within the package
     Used to read built-in data such as module_gene_m168.csv, compatible with pip installation mode
     """
-    data_dir: Traversable = importlib.resources.files(mmmvae).joinpath("data")
+    data_dir: Traversable = importlib.resources.files(m3vae).joinpath("data")
     target_path = data_dir.joinpath(filename)
     if hasattr(target_path, "__fspath__"):
         real_path = target_path.__fspath__()

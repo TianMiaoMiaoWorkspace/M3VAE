@@ -28,22 +28,22 @@
 #   {sample}.rds
 
 # The best option is to have the Seurat single-cell rds files that have been preprocessed by the users.
-# Otherwise, it is also possible to create it automatically in MMMVAE using {sample}_exp.csv.
+# Otherwise, it is also possible to create it automatically in M3VAE using {sample}_exp.csv.
 # {sample}_exp.csv is a  gene profile matrix  where row is gene and column is single-cell. 
 
 
 
 
 
-## Usage: source("seurat_to_mmmvae.R")
+## Usage: source("seurat_to_m3vae.R")
 
 # species is one of 'Homo sapiens' and 'Mus_musculus'
 # datatype is one of 'single_cell' and 'Spatial'
 # sample is sample name of input files, which is also used to name the output file
-# root is path of root eg :"D:/Desktop/MMMVAE/test/GSM8599602"
-# output_root is path of output_root eg :"D:/Desktop/MMMVAE/test/res"
+# root is path of root eg :"D:/Desktop/M3VAE/test/GSM8599602"
+# output_root is path of output_root eg :"D:/Desktop/M3VAE/test/res"
 #'----------------------------------------------------------------------
-seurat2mmmvae <- function(sample,species,datatype,root,output_root){
+seurat2m3vae <- function(sample,species,datatype,root,output_root){
   stopifnot(is.character(sample))
   stopifnot(datatype %in% c("Spatial","single_cell"))
   stopifnot(species %in% c("Homo sapiens","Mus_musculus"))

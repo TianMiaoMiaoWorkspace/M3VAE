@@ -3,12 +3,12 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mmmvae"
-version = "0.0.1"
+name = "m3vae"
+version = "0.1.1"
 authors = [
   { name="TianMiaoMiao", email="Tmm18846175562@163.com" }
 ]
-description = "MMMVAE: Multi‑Modal Metabolic Variational Auto‑Encoder for spatial transcriptomics"
+description = "M3VAE: Multi‑Modal Metabolic Variational Auto‑Encoder for spatial transcriptomics"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE*"]
@@ -32,18 +32,18 @@ dependencies = [
 ]
 
 [project.scripts]
-mmmvae = "mmmvae.MMMVAE:cli_main"
+m3vae = "m3vae.M3VAE:cli_main"
 
 [project.urls]
-"Homepage" = "https://github.com/TianMiaoMiaoWorkspace/MMMVAE"
-"Bug Tracker" = "https://github.com/TianMiaoMiaoWorkspace/MMMVAE/issues"
+"Homepage" = "https://github.com/TianMiaoMiaoWorkspace/M3VAE"
+"Bug Tracker" = "https://github.com/TianMiaoMiaoWorkspace/M3VAE/issues"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["mmmvae*"]
+include = ["m3vae*"]
 
 [tool.setuptools.package-data]
-"mmmvae" = ["data/*"]
+"m3vae" = ["data/*"]
