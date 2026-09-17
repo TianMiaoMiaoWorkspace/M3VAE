@@ -2,7 +2,7 @@
 Multi‑Modal Metabolic Variational Autoencoder
 ## Installation
 Install from PyPI:
-pip install mmmvae==1.1.1
+pip install mmmvae==0.1.1
 ## Input file hierarchy
 ```markdown
 
@@ -92,7 +92,7 @@ args.output_root/
     output_root/
         {sample}_flux.csv
         {sample}_balance.csv
-        {sample}_lesion_prob.csv
+        {sample}_prob.csv
         {sample}_python_clusters.csv
         {sample}_GMM_BICAIC.pdf
         {sample}_Importance.pdf
