@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 @author: mmTian
-v.1.0.0
+v.0.1.1
 """
 
 # %%lib and tools
@@ -579,7 +579,7 @@ def main(args):
 
 
     proba_df = pd.DataFrame(proba, columns=[f'prob_cluster_{i}' for i in range(proba.shape[1])])
-    proba_df.to_csv(os.path.join(output_root,f"{sample}_lesion_prob.csv"), index=True, index_label='cell')
+    proba_df.to_csv(os.path.join(output_root,f"{sample}_prob.csv"), index=True, index_label='cell')
 
 
 
