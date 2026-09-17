@@ -1,5 +1,5 @@
 # Code Rscript
-seurat_to_mmmvae.R
+seurat_to_m3vae.R
 ## Input file hierarchy
 
 ### 10x spatial dataset
@@ -27,7 +27,7 @@ args.root/
     {sample}_exp.csv 
     {sample}.rds
 
-The best option is to have the Seurat single-cell rds files that have been preprocessed by the users. Otherwise, it is also possible to create it automatically in MMMVAE using {sample}_exp.csv.
+The best option is to have the Seurat single-cell rds files that have been preprocessed by the users. Otherwise, it is also possible to create it automatically in M3VAE using {sample}_exp.csv.
 {sample}_exp.csv is a  gene profile matrix  where row is gene and column is single-cell. 
 
 ``` 
@@ -52,11 +52,11 @@ Single-cell will not output the "neighbor_means_counts.csv" file
 
 ## Test:
 ```markdown
-source("./seurat_to_mmmvae.R")
+source("./seurat_to_m3vae.R")
 load("./metabolic_data.RData")
 
 
-seurat2mmmvae(
+seurat2m3vae(
   sample = "spatial_exampleDATA",
   species = "Mus_musculus",
   datatype = "Spatial",

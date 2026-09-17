@@ -1,8 +1,8 @@
-# MMMVAE
+# M3VAE
 Multi‑Modal Metabolic Variational Autoencoder
 ## Installation
 Install from PyPI:
-pip install mmmvae==0.1.1
+pip install m3vae==0.1.1
 ## Input file hierarchy
 ```markdown
 
@@ -15,12 +15,12 @@ args.root/
     {sample}_adj_matrix.csv
 ```
      
-## MMMVAE Input File Specification (R Preview) All input fills can be output by seurat_to_mmmvae.R
+## M3VAE Input File Specification (R Preview) All input fills can be output by seurat_to_m3vae.R
 ```markdown
 1. {sample}_exp.csv
 The expression profile file. Each row represents a gene, and each column represents a single cell.
 The first column stores gene symbols, and the remaining columns correspond to individual cell expression values.
-> file = rio::import("./mmmvaeinput/spatial_exampleDATA_exp.csv")
+> file = rio::import("./m3vaeinput/spatial_exampleDATA_exp.csv")
 > file[1:5,1:5]
        V1 AAACAAGTATCTCCCA.1 AAACATTTCCCGGATT.1 AAACCTAAGCAGCCGG.1 AAACGAGACGGTTGAT.1
 1    Xkr4                  0                  0                  0                  0
@@ -31,7 +31,7 @@ The first column stores gene symbols, and the remaining columns correspond to in
 
 2. {sample}_coords.csv
 The spatial coordinate file. Each row represents a single cell, including cell barcode and corresponding spatial x-y coordinates.
-> file = rio::import("./mmmvaeinput/spatial_exampleDATA_coords.csv")
+> file = rio::import("./m3vaeinput/spatial_exampleDATA_coords.csv")
 > file[1:5,]
                   V1     x    y
 1 AAACAAGTATCTCCCA-1 11787 5130
@@ -42,7 +42,7 @@ The spatial coordinate file. Each row represents a single cell, including cell b
 
 3. {sample}_counts.csv
 The raw expression count file. Each row represents a single cell, and each column represents a gene. The first column stores cell barcodes, and the remaining columns correspond to gene count values.
-> file = rio::import("./mmmvaeinput/spatial_exampleDATA_counts.csv")
+> file = rio::import("./m3vaeinput/spatial_exampleDATA_counts.csv")
 > file[1:5,1:5]
                   V1 Lypla1 Atp6v1h Adhfe1 Sgk3
 1 AAACAAGTATCTCCCA.1      1       0      0    0
@@ -53,7 +53,7 @@ The raw expression count file. Each row represents a single cell, and each colum
 
 4. {sample}_neighbor_means_counts.csv
 The neighborhood smoothed expression file. Each row represents a single cell, and each column represents a gene. Stores averaged gene expression values from adjacent cells. Note: This file is only required for spatial transcriptomic data and is not used for single-cell data input.
-> file = rio::import("./mmmvaeinput/spatial_exampleDATA_neighbor_means_counts.csv")
+> file = rio::import("./m3vaeinput/spatial_exampleDATA_neighbor_means_counts.csv")
 > file[1:5,1:5]
                   V1 Lypla1 Atp6v1h Adhfe1 Sgk3
 1 AAACAAGTATCTCCCA.1    1.4     0.8    2.0  0.0
@@ -65,7 +65,7 @@ Single-cell will not input the "neighbor_means_counts.csv" file
 
 In the {sample}_score.csv, rows represent individual genes while columns represent individual cells.
 
-> file = rio::import("./mmmvaeinput/spatial_exampleDATA_score.csv")
+> file = rio::import("./m3vaeinput/spatial_exampleDATA_score.csv")
 > file[1:5,1:2]
                   V1    Glycolysis / Gluconeogenesis - Mus musculus (house mouse) - Mus musculus (mouse)
 1 AAACAAGTATCTCCCA-1                                                                        0.2087134
@@ -76,7 +76,7 @@ In the {sample}_score.csv, rows represent individual genes while columns represe
 
 5. {sample}_scores.csv
 The pathway enrichment score file. Each row represents a single cell, and each column represents a biological pathway. Stores pathway activity scores for individual cells.
-> file = rio::import("./mmmvaeinput/spatial_exampleDATA_adj_matrix.csv")
+> file = rio::import("./m3vaeinput/spatial_exampleDATA_adj_matrix.csv")
 > file[1:5,1:4]
                   V1 AAACAAGTATCTCCCA-1 AAACATTTCCCGGATT-1 AAACCTAAGCAGCCGG-1
 1 AAACAAGTATCTCCCA-1          0.2155905          0.0000000          0.0000000
@@ -103,15 +103,15 @@ args.output_root/
 
 ## Usage
 ```markdown
-mmmvae -h
-usage: mmmvae [-h] --sample SAMPLE [--species {Homo_sapiens,Mus_musculus}] [--test_file TEST_FILE]
+m3vae -h
+usage: m3vae [-h] --sample SAMPLE [--species {Homo_sapiens,Mus_musculus}] [--test_file TEST_FILE]
               [--moduleGene_file MODULEGENE_FILE] [--stoichiometry_matrix STOICHIOMETRY_MATRIX]
               [--cName_file CNAME_FILE] [--output_flux_file OUTPUT_FLUX_FILE]
               [--output_balance_file OUTPUT_BALANCE_FILE] --root ROOT [--output_root OUTPUT_ROOT]
               [--datatype {Spatial,single_cell}] [--epochs EPOCHS] [--n_clusters_range N_CLUSTERS_RANGE] [--seed SEED]
               [--n_components N_COMPONENTS] [--custom_colors CUSTOM_COLORS]
 
-MMMVAE: Multi-Modal Metabolic Variational Autoencoder
+M3VAE: Multi-Modal Metabolic Variational Autoencoder
 
 options:
   -h, --help            show this help message and exit
@@ -162,25 +162,25 @@ options:
 ## Test:
 ```markdown
 #Local installation
-cd ./MMMVAE
-conda activate mmmvae_env
+cd ./M3VAE
+conda activate m3vae_env
 pip install -e . 
 
 #Online installation
-pip install mmmvae
+pip install m3vae
 
-mmmvae -h
-mmmvae --sample spatial_exampleDATA  --species Mus_musculus --datatype Spatial  --root .\r_preprocess\example\spatial_exampleDATA\mmmvaeinput
-mmmvae --sample single-cell_exampleDATA  --species Homo_sapiens --datatype single_cell  --root .\r_preprocess\example\single-cell_exampleDATA\mmmvaeinput 
+m3vae -h
+m3vae --sample spatial_exampleDATA  --species Mus_musculus --datatype Spatial  --root .\r_preprocess\example\spatial_exampleDATA\m3vaeinput
+m3vae --sample single-cell_exampleDATA  --species Homo_sapiens --datatype single_cell  --root .\r_preprocess\example\single-cell_exampleDATA\m3vaeinput 
 ``` 
 
 
 ## Test output
 ```markdown
-(mmmvae_env) D:\Desktop\MMMVAE>mmmvae --sample spatial_exampleDATA  --species Mus_musculus --datatype Spatial  --root .\r_preprocess\example\spatial_exampleDATA\mmmvaeinput
+(m3vae_env) D:\Desktop\M3VAE>m3vae --sample spatial_exampleDATA  --species Mus_musculus --datatype Spatial  --root .\r_preprocess\example\spatial_exampleDATA\m3vaeinput
 scFEA start...
 Load data done.
-D:\Desktop\MMMVAE\src\mmmvae\MMMVAE.py:327: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+D:\Desktop\M3VAE\src\m3vae\M3VAE.py:327: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
   geneExprDf = pd.concat([geneExprDf, temp], ignore_index=True, sort=False)
 Process data done.
 Starting train neural network...

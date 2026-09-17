@@ -611,7 +611,7 @@ def main(args):
 
 def parse_arguments():
     #scFEA
-    parser = argparse.ArgumentParser(description='MMMVAE: Multi-Modal Metabolic Variational Autoencoder')
+    parser = argparse.ArgumentParser(description='M3VAE: Multi-Modal Metabolic Variational Autoencoder')
     parser.add_argument('--sample', type=str, required=True,
                         help="Sample name of input files, which is also used to name the output files")
     parser.add_argument('--species', type=str, default="Homo_sapiens",
@@ -635,7 +635,7 @@ def parse_arguments():
                               The Spatial folder includes tissue_positions_list.csv, tissue_hires_image.png, tissue_lowres_image.png and scalefactors_json.json.
                               The filtered_count_matrix folder includes barcodes.tsv.gz, features.tsv.gz, and  matrix.mtx.gz""")
     parser.add_argument('--output_root', type=str, required=False,
-                        help="Output directory for MMMVAE results storing output matrices. Default: {root}/output")
+                        help="Output directory for M3VAE results storing output matrices. Default: {root}/output")
     parser.add_argument('--datatype', type=str, default='Spatial', choices=['Spatial','single_cell'],
                         help="The data type input by the user, either 'single_cell' or 'Spatial'. Default: %(default)s")
     parser.add_argument('--epochs', type=int, default=100,

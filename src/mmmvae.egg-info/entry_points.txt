@@ -1,2 +1,0 @@
-[console_scripts]
-mmmvae = mmmvae.MMMVAE:cli_main
